@@ -122,7 +122,7 @@ namespace PaperBallGame
                 activePaperBall.rb.isKinematic = false;
                 activePaperBall.rb.velocity = worldVelocity + new Vector3(0, ThrowDirectionY * worldVelocity.z, 0);
 
-                float spinCoefficient = 10f;
+                float spinCoefficient = 7.5f;
                 Vector3 spinAxis = -Vector3.Cross(worldVelocity, Vector3.up).normalized;
                 float spinSpeed = worldVelocity.magnitude * spinCoefficient;
                 activePaperBall.rb.angularVelocity = spinAxis * spinSpeed;

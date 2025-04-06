@@ -119,6 +119,8 @@ namespace PaperBallGame
         private GameState previousGameState;
         void OnPauseClicked()
         {
+            if (InputManager.instance.gameState != GameState.Menu && InputManager.instance.gameState != GameState.BallSelect)
+                return;
             previousGameState = InputManager.instance.gameState;
             pausePanel.SetActive(true);
             InputManager.instance.gameState = GameState.Menu;
@@ -130,6 +132,12 @@ namespace PaperBallGame
             if (previousGameState == GameState.BallCrumpling)
             {
                 previousGameState = GameState.BallTrhow;
+            }
+
+            if (previousGameState == GameState.BallTrhow &&
+                InputManager.instance.activePaperBall?.rb.velocity.magnitude < 0.2f)
+            {
+                previousGameState = GameState.BallSelect;
             }
             InputManager.instance.gameState = previousGameState;
             if (!FanController.instance.autoFanControl)
