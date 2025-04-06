@@ -157,6 +157,21 @@ MonoBehaviour:
   outlineObj: {fileID: 787985937378924146}
   originanPos: {x: 0, y: 0, z: 0}
   thrown: 0
+  inAir: 0
+  crumplingSound:
+    Guid:
+      Data1: -105998918
+      Data2: 1272180595
+      Data3: 557215117
+      Data4: -1948333431
+    Path: event:/PaperBall_Crumpling
+  ground:
+    Guid:
+      Data1: 416431626
+      Data2: 1309164443
+      Data3: 204152214
+      Data4: -1201765879
+    Path: event:/papertouch
 --- !u!1001 &445316335823776547
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -45,7 +45,7 @@ namespace PaperBallGame
         }
 
 
-        private void RefreshScoreUI()
+        public void RefreshScoreUI()
         {
             if (currentScore >= bestScore)
             {

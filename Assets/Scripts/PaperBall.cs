@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using DG.Tweening;
-using Unity.VisualScripting;
+using FMODUnity;
 
 namespace PaperBallGame
 {
@@ -25,6 +25,10 @@ namespace PaperBallGame
         public bool thrown;
         public bool inAir;
 
+        [Header("audio")]
+        [Space]
+        [SerializeField] private EventReference crumplingSound;
+        [SerializeField] private EventReference ground;
         void Start()
         {
             rb = GetComponent<Rigidbody>();
@@ -34,7 +38,7 @@ namespace PaperBallGame
             selectionCol = GetComponentInChildren<Collider>(false);
         }
 
-        
+
 
         void Update()
         {
@@ -42,7 +46,7 @@ namespace PaperBallGame
             {
                 HandleSelectionState();
             }
-        
+
         }
 
         void FixedUpdate()
@@ -60,9 +64,9 @@ namespace PaperBallGame
                     }
 
                 }
-               
+
             }
-            
+
         }
 
         void ODrawGizmos()
@@ -85,7 +89,7 @@ namespace PaperBallGame
 
                 // currentTween = this.transform.DOLocalMove(originanPos - 0.1f * transform.InverseTransformDirection(transform.up), 0.35f);
                 currentTween = this.transform.DOMove(originanPos - 0.1f * (transform.up), 0.35f);
-                
+
             }
             else
             {
@@ -108,13 +112,13 @@ namespace PaperBallGame
             currentTween.Kill();
             this.outlineObj.SetActive(false);
             selectionCol.enabled = false;
-            
+
             DG.Tweening.Sequence seq = DOTween.Sequence();
 
             Renderer renderer = this.GetComponentInChildren<Renderer>();
             if (renderer != null)
             {
-                renderer.material = new Material (renderer.material);
+                renderer.material = new Material(renderer.material);
             }
 
             seq.Append(
@@ -123,21 +127,26 @@ namespace PaperBallGame
 
             seq.Join(
                 DOTween.To(() => this.transform.eulerAngles.y,
-                x => {
+                x =>
+                {
                     this.transform.eulerAngles = new Vector3(this.transform.eulerAngles.x, this.transform.eulerAngles.y, x);
                 }, 180.0f, 0.25f)
             );
 
-            seq.AppendInterval(0.3f);
+            seq.AppendInterval(0.2f);
+
+            seq.AppendCallback(() => AudioManager.instance.PlayOneShot(crumplingSound, this.transform.position));
 
             seq.Append(
                 DOTween.To(() => crumplingFactor,
-                x =>{
-                    renderer.material.SetFloat( "_frame", x);
+                x =>
+                {
+                    renderer.material.SetFloat("_frame", x);
                     crumplingFactor = x;
                 }, 99f, 1.0f)
 
-            ).OnComplete(() => {
+            ).OnComplete(() =>
+            {
                 col.enabled = true;
                 InputManager.instance.activePaperBall = this;
                 InputManager.instance.gameState = GameState.BallTrhow;
@@ -145,9 +154,29 @@ namespace PaperBallGame
             });
         }
 
-        
+        private bool touched;
+        void OnCollisionEnter(Collision collision)
+        {
+            touched = true;
+            
+            float speed = collision.relativeVelocity.magnitude;
+
+            float minSpeed = 3f;
+            float maxSpeed = 15f;
+            float volume = 0f;
+
+            if (speed > minSpeed)
+            {
+                float factor = touched? 0.5f : 1f;
+                volume = Mathf.Clamp01((speed - minSpeed) / (maxSpeed - minSpeed)) * factor;
+            }
+
+            AudioManager.instance.PlayOneShot(ground, transform.position, volume);
+        }
 
 
-    
+
+
+
     }
 }

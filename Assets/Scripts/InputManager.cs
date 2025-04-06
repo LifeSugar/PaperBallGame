@@ -50,15 +50,25 @@ namespace PaperBallGame
         {
             if (gameState == GameState.BallTrhow)
             {
-                ThrowPaperBall();
+                
                 if (activePaperBall)
                 {
+                    ThrowPaperBall();
                     if (activePaperBall.rb.velocity.magnitude <= 0.2 && activePaperBall.thrown)
                     {
                         PaperBallManager.instance.ReCalculateBallPos();
                         PaperBallManager.instance.SetBallsTranform();
+                        PaperBallManager.instance.paperBallOnGround.Add(activePaperBall);
                         activePaperBall.inAir = false;
                         activePaperBall = null;
+                        if (PaperBallManager.instance.paperBallsInHand.Count == 0)
+                        {
+                            // PaperBallManager.instance.DestroyPaperBall();
+                            // PaperBallManager.instance.InitializePaperBalls();
+                            // UIManager.instance.GetRedayRestart();
+                            StartCoroutine(ReSetGame());
+
+                        }
                     }
                 }
             }
@@ -144,7 +154,7 @@ namespace PaperBallGame
                     paperBall.transform.SetParent(null, true);
 
                     PaperBallManager.instance.paperBallsInHand.ForEach(x => x.onMouse = false);
-                    PaperBallManager.instance.paperBallCount -= 1;
+                    // PaperBallManager.instance.paperBallCount -= 1;
                     PaperBallManager.instance.paperBallsInHand.Remove(paperBall);
                     PaperBallManager.instance.ReSetPaperBall();
 
@@ -162,6 +172,14 @@ namespace PaperBallGame
             Gizmos.color = Color.red;
             Gizmos.DrawRay(this.transform.position, new Vector3(0, ThrowDirectionY, 1).normalized * 5f);
 
+        }
+
+        IEnumerator ReSetGame()
+        {
+            yield return new WaitForSeconds(1.5f);
+            PaperBallManager.instance.DestroyPaperBall();
+            PaperBallManager.instance.InitializePaperBalls();
+            UIManager.instance.GetRedayRestart();
         }
     }
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{30623689-99dc-401e-ab80-9e06837a3f1a}">
+	<object class="AudioFile" id="{34fa900a-ad94-421b-9e5f-4c74dd6e2782}">
 		<property name="assetPath">
-			<value>paper_crumpling.wav</value>
+			<value>paper_crumpling2.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
@@ -11,7 +11,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>1.3252154195011339</value>
+			<value>1</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{8a2d7a7e-45ac-4cbc-b552-aca1fb3f8847}</destination>
