@@ -47,15 +47,22 @@ namespace PaperBallGame
 
         public void RefreshScoreUI()
         {
-            if (currentScore >= bestScore)
+            if (totalScores >= bestScore)
             {
-                bestScore = currentScore;
+                bestScore = totalScores;
             }
 
             bestScoreT.text = bestScore.ToString();
             currentScoreT.text = currentScore.ToString();
             totalScoresT.text = totalScores.ToString();
 
+        }
+
+        public void ClearScores()
+        {
+            currentScore = 0;
+            totalScores = 0;
+            RefreshScoreUI();
         }
 
 

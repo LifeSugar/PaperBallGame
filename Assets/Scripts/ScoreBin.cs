@@ -19,11 +19,13 @@ namespace PaperBallGame
         [SerializeField] private EventReference getScoreSFX;
         [Header("VFX")]
         [SerializeField] private ParticleSystem getScoreVFX;
+        
+        private Collider previousCollider;
         void OnTriggerEnter (Collider other)
         {
-            if (true)
+            if (other != previousCollider)
             {
-                
+                previousCollider = other;
                 AudioManager.instance.PlayOneShot(getScoreSFX, this.transform.position);
                 getScoreVFX.Play();
                 scoreText.text ="+" + scorePerBall;
@@ -36,6 +38,11 @@ namespace PaperBallGame
                         scoreText.gameObject.SetActive(false);
                     });
             }
+        }
+
+        public void RefreshPaperBall()
+        {
+            previousCollider = null;
         }
 
     }
