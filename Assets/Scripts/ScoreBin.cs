@@ -21,7 +21,7 @@ namespace PaperBallGame
         [SerializeField] private ParticleSystem getScoreVFX;
         void OnTriggerEnter (Collider other)
         {
-            if (other.GetComponent<PaperBall>() != null)
+            if (true)
             {
                 
                 AudioManager.instance.PlayOneShot(getScoreSFX, this.transform.position);

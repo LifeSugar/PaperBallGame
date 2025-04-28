@@ -85,7 +85,7 @@ Material:
     - _ZWrite: 1
     - _ZWriteControl: 0
     - _exaggeration: 0
-    - _frame: 9.8
+    - _frame: 99
     - _frames: 100
     - _resolutionY: 1024
     - _speed: 1

@@ -42,11 +42,11 @@ namespace PaperBallGame
 
         void Update()
         {
-            if (InputManager.instance.gameState == GameState.Menu)
-            {
-                bgmBus.setVolume(bgmVolume);
-                sfxBus.setVolume(sfxVolume); 
-            }
+            // if (InputManager.instance.gameState == GameState.Menu)
+            // {
+            //     bgmBus.setVolume(bgmVolume);
+            //     sfxBus.setVolume(sfxVolume); 
+            // }
         }
 
         public void PlayOneShot(EventReference soundEvent, Vector3 WorldPos)
