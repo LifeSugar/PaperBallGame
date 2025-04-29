@@ -69,10 +69,10 @@ MonoBehaviour:
   Path: Fmod _Audio/PaperBall/Build/Desktop/BGM.bank
   Name: BGM
   StudioPath: bank:/BGM
-  lastModified: 638794983252943023
+  lastModified: 638815265254968855
   FileSizes:
   - Name: Desktop
-    Value: 976896
+    Value: 976960
   Exists: 1
 --- !u!114 &-3817689744993620577
 MonoBehaviour:
@@ -89,7 +89,7 @@ MonoBehaviour:
   Path: Fmod _Audio/PaperBall/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638794983252943023
+  lastModified: 638815265255027004
   FileSizes:
   - Name: Desktop
     Value: 1340
@@ -109,10 +109,10 @@ MonoBehaviour:
   Path: Fmod _Audio/PaperBall/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638794983252943023
+  lastModified: 638815265255037061
   FileSizes:
   - Name: Desktop
-    Value: 1140
+    Value: 1176
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -138,13 +138,41 @@ MonoBehaviour:
   - {fileID: 3247811251389622144}
   - {fileID: -6917228367336355417}
   - {fileID: 7847688073492914963}
+  - {fileID: 538016840025720198}
   EditorParameters: []
   MasterBanks:
   - {fileID: -3817689744993620577}
   StringsBanks:
   - {fileID: -1886021549687710001}
-  cacheTime: 638794983252972999
+  cacheTime: 638815265258233641
   cacheVersion: 131624
+--- !u!114 &538016840025720198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/wrong
+  m_EditorClassIdentifier: 
+  Path: event:/wrong
+  Guid:
+    Data1: 1531460117
+    Data2: 1233426797
+    Data3: -2038840663
+    Data4: 623081632
+  Banks:
+  - {fileID: 1872512655497730746}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &1872512655497730746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,10 +188,10 @@ MonoBehaviour:
   Path: Fmod _Audio/PaperBall/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638794983252972999
+  lastModified: 638815265258233641
   FileSizes:
   - Name: Desktop
-    Value: 331872
+    Value: 356992
   Exists: 1
 --- !u!114 &3247811251389622144
 MonoBehaviour:
